@@ -2,12 +2,15 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"p1/constant"
+	"regexp"
 	"strings"
 )
 
 func main() {
 	testCases := []string{
+		constant.TCS1,
 		constant.TC0,
 		constant.TC1,
 		constant.TC2,
@@ -16,21 +19,27 @@ func main() {
 		constant.TC5,
 		constant.TC6,
 		constant.TC7,
-		constant.TC8,
+		constant.TCS3,
 	}
 
 	for _, testCase := range testCases {
-		if isGoodBoy(testCase) {
-			printGoodBoy()
+		if !isContainOnlySAndR(testCase) {
+			log.Println("The test case is not valid")
+
 		} else {
-			printBadBoy()
+			if isGoodBoy(testCase) {
+				printGoodBoy()
+			} else {
+				printBadBoy()
+			}
 		}
 	}
-}
 
-func isNoShotHappen(tc string) bool {
-	// since there's no shooting happen so good boy will be an answer
-	return tc == ""
+	// you can simple gen test case with this func 
+	// it will write text to file name testCase
+	// then you can simply copy and paste to constant.go file
+	// tools.TestCaseGenGoodBoy(100,false,true)
+
 }
 
 func isNotRevengeFirst(tc string) bool {
@@ -61,6 +70,10 @@ func isEachShotWasRevenge(tc string) bool {
 	return notRevengeYetShot == 0
 }
 
+func isContainOnlySAndR(tc string) bool {
+	return regexp.MustCompile(`^[SR]+$`).MatchString(tc)
+}
+
 func printGoodBoy() {
 	fmt.Println(constant.GoodBoy)
 }
@@ -72,9 +85,6 @@ func printBadBoy() {
 func isGoodBoy(testCase string) bool {
 	// true -> good boy
 	// false -> bad boy
-	if isNoShotHappen(testCase) {
-		return true
-	}
 	if !isNotRevengeFirst(testCase) {
 		return false
 	}

@@ -38,18 +38,6 @@ func (t *TestSuite) TestIsLastShotIsNotGotShot() {
 	t.Equal(expect, actual)
 }
 
-func (t *TestSuite) TestNoShotHappen() {
-	expect := true
-	actual := isNoShotHappen(constant.TC0)
-	t.Equal(expect, actual)
-}
-
-func (t *TestSuite) TestShotHappen() {
-	expect := false
-	actual := isNoShotHappen(constant.TC1)
-	t.Equal(expect, actual)
-}
-
 func (t *TestSuite) TestEachShotWasRevenge() {
 	expect := true
 	actual := isEachShotWasRevenge(constant.TC1)
@@ -81,7 +69,7 @@ func (t *TestSuite) TestBadBoyLastGotShot() {
 }
 
 func (t *TestSuite) TestGoodBoyNoShotHappen() {
-	expect := true
+	expect := false
 	actual := isGoodBoy(constant.TC0)
 	t.Equal(expect, actual)
 }
