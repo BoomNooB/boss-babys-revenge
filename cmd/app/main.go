@@ -25,7 +25,6 @@ func main() {
 	for _, testCase := range testCases {
 		if !isContainOnlySAndR(testCase) {
 			log.Println("The test case is not valid")
-
 		} else {
 			if isGoodBoy(testCase) {
 				printGoodBoy()
@@ -35,9 +34,10 @@ func main() {
 		}
 	}
 
-	// you can simple gen test case with this func 
-	// it will write text to file name testCase
-	// then you can simply copy and paste to constant.go file
+	// you can gen test case with this func
+	// it will write text to file name "testCase"
+	// then you can simply copy and paste to constant.go file and assign to new constant
+	// also dont fotget to add test case in main.go file
 	// tools.TestCaseGenGoodBoy(100,false,true)
 
 }
