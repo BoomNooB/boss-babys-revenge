@@ -3,6 +3,8 @@
 
 ## TechStack
 All are written in **Go**,
+Please use **Go version** at least **1.22**
+
 
 ## How to run
 
